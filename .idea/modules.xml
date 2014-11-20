@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SwipeList.iml" filepath="$PROJECT_DIR$/SwipeList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Swipe_RecyclerView_r0adkll.iml" filepath="$PROJECT_DIR$/Swipe_RecyclerView_r0adkll.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/swipelistview/swipelistview.iml" filepath="$PROJECT_DIR$/swipelistview/swipelistview.iml" />
     </modules>

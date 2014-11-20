@@ -1,4 +1,9 @@
 apply plugin: 'android-library'
+apply plugin: 'android-maven'
+
+version = project.VERSION_NAME
+group = project.GROUP
+archivesBaseName = "swipelistview"
 
 android {
     compileSdkVersion 21
