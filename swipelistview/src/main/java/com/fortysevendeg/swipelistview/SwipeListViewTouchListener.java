@@ -544,7 +544,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
             generateRevealAnimate(view, swap, swapRight, position);
         }
         if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_DISMISS) {
-            generateDismissAnimate(parentView, swap, swapRight, position);
+            generateDismissAnimate(view, swap, swapRight, position);
         }
         if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_CHOICE) {
             generateChoiceAnimate(view, position);
@@ -1048,9 +1048,8 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
             }
         }
         if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_DISMISS) {
-            setTranslationX(parentView, deltaX);
-            setAlpha(parentView, Math.max(0f, Math.min(1f,
-                    1f - 2f * Math.abs(deltaX) / viewWidth)));
+            setTranslationX(frontView, deltaX);
+//            setAlpha(parentView, Math.max(0f, Math.min(1f, 1f - 2f * Math.abs(deltaX) / viewWidth)));
         } else if (swipeCurrentAction == SwipeListView.SWIPE_ACTION_CHOICE) {
             if ((swipingRight && deltaX > 0 && posX < DISPLACE_CHOICE)
                     || (!swipingRight && deltaX < 0 && posX > -DISPLACE_CHOICE)

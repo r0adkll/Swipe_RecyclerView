@@ -1,5 +1,5 @@
-apply plugin: 'android-library'
-apply plugin: 'android-maven'
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
 
 version = project.VERSION_NAME
 group = project.GROUP
@@ -7,23 +7,15 @@ archivesBaseName = "swipelistview"
 
 android {
     compileSdkVersion 21
-    buildToolsVersion '21.0.0'
+    buildToolsVersion '21.1.1'
 
     defaultConfig {
-
         minSdkVersion 8
         targetSdkVersion 21
-    }
-
-    buildTypes {
-        release {
-            runProguard false
-
-        }
     }
 }
 dependencies {
 	compile 'com.nineoldandroids:library:2.4.0+'
     compile 'com.android.support:support-v4:21.+'
-    compile 'com.android.support:recyclerview-v7:+'
+    compile 'com.android.support:recyclerview-v7:21.+'
 }
