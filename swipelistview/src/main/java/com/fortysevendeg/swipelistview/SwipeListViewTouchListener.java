@@ -603,6 +603,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
                 .setListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
+                        swipeListView.resetScrolling();
                         if (swap) {
                             closeOpenedItems();
                             performDismiss(view, position, true);

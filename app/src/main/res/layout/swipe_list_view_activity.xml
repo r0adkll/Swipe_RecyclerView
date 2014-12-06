@@ -42,6 +42,7 @@
             swipe:swipeCloseAllItemsWhenMoveList="true"
             swipe:swipeMode="both"
             swipe:onlyOneOpenedWhenSwipe="true"
+            swipe:swipeActionRight="dismiss"
             />
 
 </LinearLayout>

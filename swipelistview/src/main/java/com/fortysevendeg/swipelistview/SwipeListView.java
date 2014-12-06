@@ -46,7 +46,7 @@ public class SwipeListView extends RecyclerView {
     /**
     * whether debug
     */
-    public final static boolean DEBUG = false;
+    public final static boolean DEBUG = true;
 
     /**
      * Used when user want change swipe list mode on some rows
