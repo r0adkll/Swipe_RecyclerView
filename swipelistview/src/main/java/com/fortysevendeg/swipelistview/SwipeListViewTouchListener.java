@@ -682,8 +682,7 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
                 });
 
 
-
-}
+    }
 
     private void resetCell() {
         if (downPosition != ListView.INVALID_POSITION) {
@@ -777,6 +776,8 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         if (opened != null) {
             int start = mLayoutManager.findFirstVisibleItemPosition();
             int end = mLayoutManager.findLastVisibleItemPosition();
+            if(start == -1 || end == -1) return;
+
             for (int i = start; i <= end; i++) {
                 if (opened.get(i)) {
                     closeAnimate(swipeListView.getChildAt(i - start).findViewById(swipeFrontView), i);
@@ -983,24 +984,28 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         }
 
         if (onlyOneOpenedWhenSwipe) {
-                        closeOtherOpenedItems();
-                        view.onTouchEvent(motionEvent);
-                        return true;
-                    }
+            closeOtherOpenedItems();
+            view.onTouchEvent(motionEvent);
+            return true;
+        }
         return false;
     }
 
     private void closeOtherOpenedItems() {
-        	if (opened != null && downPosition != SwipeListView.NO_POSITION) {
-            	    int start = mLayoutManager.findFirstVisibleItemPosition();
-            	    int end = mLayoutManager.findLastVisibleItemPosition();
-            	    for (int i = start; i <= end; i++) {
-                	        if (opened.get(i) && i != downPosition) {
-                    	            closeAnimate(swipeListView.getChildAt(i - start).findViewById(swipeFrontView), i);
-                    		}
-                	    }
-            	}
+        if (opened != null && downPosition != SwipeListView.NO_POSITION) {
+            int start = mLayoutManager.findFirstVisibleItemPosition();
+            int end = mLayoutManager.findLastVisibleItemPosition();
+
+            if(start == -1 || end == -1) return;
+
+            for (int i = start; i <= end; i++) {
+                if (opened.get(i) && i != downPosition) {
+                    closeAnimate(swipeListView.getChildAt(i - start).findViewById(swipeFrontView), i);
+                }
             }
+        }
+    }
+
     private void setActionsTo(int action) {
         oldSwipeActionRight = swipeActionRight;
         oldSwipeActionLeft = swipeActionLeft;
@@ -1063,25 +1068,25 @@ public class SwipeListViewTouchListener implements View.OnTouchListener {
         }
     }
 
-/**
- * Class that saves pending dismiss data
- */
-class PendingDismissData implements Comparable<PendingDismissData> {
-    public int position;
-    public View view;
+    /**
+     * Class that saves pending dismiss data
+     */
+    class PendingDismissData implements Comparable<PendingDismissData> {
+        public int position;
+        public View view;
 
-    public PendingDismissData(int position, View view) {
-        this.position = position;
-        this.view = view;
+        public PendingDismissData(int position, View view) {
+            this.position = position;
+            this.view = view;
+        }
+
+        @Override
+        public int compareTo(PendingDismissData other) {
+            // Sort by descending position
+            return other.position - position;
+        }
+
     }
-
-    @Override
-    public int compareTo(PendingDismissData other) {
-        // Sort by descending position
-        return other.position - position;
-    }
-
-}
 
     /**
      * Perform dismiss action
